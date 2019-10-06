@@ -29,12 +29,12 @@ oc new-build -D $'FROM docker.io/openshift/jenkins-agent-maven-35-centos7:v3.11\
 
 # Create pipeline build config pointing to the ${REPO} with contextDir `openshift-tasks`
 # TBD
-echo "Create pipeline build config pointing to the ${REPO} with contextDir `openshift-tasks`"
+echo "Create pipeline build config pointing to the ${REPO} with contextDir openshift-tasks"
 oc new-app ${REPO} --context-dir=openshift-tasks
 
 # Make sure that Jenkins is fully up and running before proceeding!
 while : ; do
-  echo "Checking if Jenkins is Ready..."
+  echo "Checking if Jenkins is Ready...into ${GUID}-jenkins"
   AVAILABLE_REPLICAS=$(oc get dc jenkins -n ${GUID}-jenkins -o=jsonpath='{.status.availableReplicas}')
   if [[ "$AVAILABLE_REPLICAS" == "1" ]]; then
     echo "...Yes. Jenkins is ready."
