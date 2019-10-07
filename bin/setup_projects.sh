@@ -12,8 +12,8 @@ GUID=$1
 USER=$2
 FROM_JENKINS=$3
 
-oc login https://master.na311.openshift.opentlc.com:443 --token=fjtan4wiNz1MoM2hhrEzkoFwTSB2F_TRDFVnXF6hqTE --insecure-skip-tls-verify
-
+#oc login https://master.na311.openshift.opentlc.com:443 --token=fjtan4wiNz1MoM2hhrEzkoFwTSB2F_TRDFVnXF6hqTE --insecure-skip-tls-verify
+oc login https://master.na311.openshift.opentlc.com:443 --token=LwJy-navtZewKRplCrefNmqgwcANJcMW884rNXor8F8 --insecure-skip-tls-verify
 echo "Creating Homework Projects for GUID=${GUID} and USER=${USER}"
 oc new-project ${GUID}-jenkins    --display-name="${GUID} AdvDev Homework Jenkins"
 oc new-project ${GUID}-tasks-dev  --display-name="${GUID} AdvDev Homework Tasks Development"
